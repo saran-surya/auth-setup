@@ -1,0 +1,7 @@
+GET http://localhost:5000/email/checkLogin
+
+###
+GET http://localhost:5000/email
+
+###
+POST http://localhost:5000/email?reciptantMail=dummy@gmail.com
