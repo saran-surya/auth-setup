@@ -1,18 +1,30 @@
 {
-  "name": "node_auth_setup",
+  "name": "auth-setup",
   "version": "1.0.0",
-  "description": "",
+  "description": "A npm package to setup two-step-auth package localy for custom emails and servers, you are in control of your data.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon test.js",
-    "start" : "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saran-surya/auth-setup.git"
+  },
+  "keywords": [
+    "OTP",
+    "local",
+    "server",
+    "emailAuth",
+    "two-step-auth"
+  ],
+  "author": "Saran Surya",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/saran-surya/auth-setup/issues"
+  },
+  "homepage": "https://github.com/saran-surya/auth-setup#readme"
 }
