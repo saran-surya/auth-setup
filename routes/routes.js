@@ -101,6 +101,7 @@ router.post("/", async(req, res)=>{
         console.log("Mail ID not valid ->",reciptantMail)
         res.status(404).json({
             success : false,
+            mail : reciptantMail,
             message : "Reciptant mail is not valid"
         })
     } else {

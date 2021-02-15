@@ -97,7 +97,15 @@ app.listen(5000, async(req, res)=>{
     console.log("server started")
 })
 ```
-
+#### Preparing your NODE server for HOSTING:
+- ##### HEROKU  ```node test.js --setup=heroku```
+    - **node <fileName>.js --setup=heroku**
+    - Execute the following command in the command line,
+    - This will create a ProcFile and a requirements.txt file in helping with hosting in Heroku.
+    - ### If you have already created a ProcFile for Heroku, then kindly ignore, Just add the requirements.txt file if you have missed it
+    - (Adding Requirements.txt) in your **Command Promt** follow the snippet below.
+    #### ```pip freeze > requirements.txt```
+    
 ##### Feel free to raise PR for issues :)
 
 #### Thankyou ❤️

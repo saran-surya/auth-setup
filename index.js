@@ -33,7 +33,7 @@ function initiateFiles(){
                 path : authSetupFiles.filePath
             })
             if(process.env.loginEmailID && process.env.loginPassword && process.env.loginEmailID.length > 5 && process.env.loginPassword.length > 5 && validateEmail(process.env.loginEmailID)){
-                console.log("--> Bootstrapped auth server settings.✔️")
+                console.log("------> Bootstrapped auth server settings.✔️")
             }else{
                 console.log("\n------> Variables missing <loginEmailID> and <loginPassword> !!")
             }
@@ -48,6 +48,7 @@ function initiateFiles(){
 }
 
 // *********** To delay and initialise the values ******************
+if(setupFlag !== flag)
 setTimeout(()=>{
     initiateFiles();
 }, 1000);
