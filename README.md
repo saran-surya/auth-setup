@@ -33,6 +33,10 @@ const {authSetupFiles} = require('auth-setup')
 ```js
 authSetupFiles.filePath = "test.env"
 ```
+- ##### Delcare your session name / Company Name (optional)
+```js
+authSetupFiles.sessionName = "Sample"
+```
 - ##### Declare your favorite route to use with the package and point it using the <span color='red'>app.use()</span> method.
 ```js
 app.use("/email", authSetupFiles.emailRouter)
@@ -40,10 +44,60 @@ app.use("/email", authSetupFiles.emailRouter)
 - ### You are all done for the backend setup 👍
 
 ## Usage (accessing the routes from Frontend)
+- ### Check if credentials pass initial test.
 - I am using **localhost:5000** as the parent route here, it is applicable for all other routes.
 - To check if the package is able to login to the Mail ID provided, performa  get request so the script will login to your Email ID and then give you a call back in JSON stating if it was success. Pass the route you specified in the previous step. ... *app.use*('/email', ...)
 ```http
 GET http://localhost:5000/email
 ```
+- **Success Response** on login:
+```
+{
+  "success": true,
+  "message": "Successfully logged in"
+}
+```
+
+- **Failure Response** on login:
+```
+{
+  "success": false,
+  "message": "credentials mis-match"
+}
+```
+- ### Sending an OTP to the reciever Email
+- All you need to do is to send a **POST** Request to the same route that you specified with the query containing the Paramaters : **<routepath>?reciptantMail=dummy@dummy.com**
+```
+POST http://localhost:5000/email?reciptantMail=dummy@dummy.com
+```
+- This will yield you an OTP and the JSON will look as follows.
+    - ##### Gives an OTP.
+    - ##### Gives a reference mail to work with.
+```
+{
+  "success": true,
+  "OTP": 121568,
+  "mail" : "dummy@dummy.com",
+  "message": "OTP sent successfully"
+}
+```
+
+- #### Complete Example : 
+```
+const express = require('express')
+const app = express();
+
+const {authSetupFiles} = require('auth-setup')
+authSetupFiles.filePath = "config/test.env"
+authSetupFiles.sessionName = "Sample"
+
+app.use("/email", authSetupFiles.emailRouter)
+
+app.listen(5000, async(req, res)=>{
+    console.log("server started")
+})
+```
+
+##### Feel free to raise PR for issues :)
 
 #### Thankyou ❤️

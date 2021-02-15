@@ -94,6 +94,7 @@ router.post("/", async(req, res)=>{
         res.status(200).json({
             success : true,
             OTP : OTP,
+            mail : reciptantMail,
             message : "OTP sent successfully"
         })
     } else if(!validateEmail(reciptantMail)) {
