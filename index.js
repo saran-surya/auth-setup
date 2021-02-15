@@ -48,10 +48,11 @@ function initiateFiles(){
 }
 
 // *********** To delay and initialise the values ******************
-if(setupFlag !== flag)
-setTimeout(()=>{
-    initiateFiles();
-}, 1000);
+if(setupFlag !== flag){
+    setTimeout(()=>{
+        initiateFiles();
+    }, 1000);
+}
 
 module.exports = {
     authSetupFiles : authSetupFiles,

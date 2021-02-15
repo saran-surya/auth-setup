@@ -10,6 +10,7 @@ function initialiseSetup(startingPoint = "index.js"){
                 return;
             }
             console.log("-----> success, requirements.txt created✔️");
+            process.exit(0)
         });
 
         const writeStream = fs.createWriteStream("Procfile");
