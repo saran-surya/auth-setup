@@ -1,6 +1,6 @@
 {
   "name": "auth-setup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A npm package to setup two-step-auth package localy for custom emails and servers, you are in control of your data.",
   "main": "index.js",
   "scripts": {

@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 const {emailRouter} = require('./routes/routes');
 const initialiseSetup = require('./hostingCommands/herokuSetup');
 const setupFlag = "--setup=heroku"
-
+const path = require('path')
 const [filePath, flag] = process.argv.slice(1);
 
 if(flag == setupFlag){
@@ -17,7 +17,8 @@ if(flag == setupFlag){
 const authSetupFiles = {
     filePath : "",
     emailRouter : emailRouter,
-    sessionName : ""
+    sessionName : "",
+    execPath : path.resolve(__dirname)
 }
 
 function validateEmail(email) {

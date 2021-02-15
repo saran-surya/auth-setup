@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const {spawn} = require('child_process');
 const dotenv = require('dotenv');
+const path = require('path')
 
 // initialisation variables
 var setupFiles = {}
 var OTP = ""
+
 
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -27,7 +29,7 @@ function generateOtp(){
 function checkCredentials(){
     return new Promise((resolve, reject)=>{
     try {
-        const mailData = spawn('python', ['login.py', process.env.loginEmailID, process.env.loginPassword])
+        const mailData = spawn('python', [path.resolve(setupFiles.execPath,'login.py'), process.env.loginEmailID, process.env.loginPassword])
             mailData.stdout.on('data', async(data)=>{
                 const readerData = await data.toString();
                 console.log(data.toString());
@@ -44,11 +46,11 @@ function checkCredentials(){
     })
 }
 
-function sendOTP(){
+function sendOTP(reciptantMail){
     OTP = generateOtp();
     return new Promise((resolve, reject)=>{
         try {
-            const mailData = spawn('python', ['mailer.py',reciptantMail, OTP, setupFiles.sessionName, process.env.loginEmailID, process.env.loginPassword])
+            const mailData = spawn('python', [path.resolve(setupFiles.execPath,'mailer.py'), reciptantMail, OTP, setupFiles.sessionName, process.env.loginEmailID, process.env.loginPassword])
             mailData.stdout.on('data', async(data)=>{
                 const readerData = await data.toString()
                 console.log(data.toString());
@@ -88,7 +90,7 @@ router.post("/", async(req, res)=>{
     initiateFiles()
     const {reciptantMail} = req.query;
     console.log("reciptant -->",reciptantMail)
-    if(reciptantMail && await checkCredentials() && validateEmail(reciptantMail) && await sendOTP()){
+    if(reciptantMail && await checkCredentials() && validateEmail(reciptantMail) && await sendOTP(reciptantMail)){
         res.status(200).json({
             success : true,
             OTP : OTP,
