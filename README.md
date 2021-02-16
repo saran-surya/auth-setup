@@ -8,6 +8,7 @@
 ## Need for the package
   - As per the suggestions, people need the package to be available locally, and also have them easily set for hosting, 
   - **Privacy concerns** , Even though we never share any email ID's that was sent using the package [two-step-auth](https://www.npmjs.com/package/two-step-auth), and neither do we use it for our purposes, people wanted their own server so this was created on top of  that, You have control on your data.
+    -  #### You have control on your data
     -  #### Own Mail ID
     -  #### Host on your favorite servers / Micro servers
     - #### Greater speeds of sending mails
@@ -98,7 +99,8 @@ app.listen(5000, async(req, res)=>{
 })
 ```
 #### Preparing your NODE server for HOSTING:
-- ##### HEROKU  ```node test.js --setup=heroku```
+- ##### HEROKU  
+    - ```node test.js --setup=heroku```
     - **node <fileName>.js --setup=heroku**
     - Execute the following command in the command line,
     - This will create a ProcFile and a requirements.txt file in helping with hosting in Heroku.
