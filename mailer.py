@@ -29,7 +29,6 @@ message['To'] = toMail
 html = f"""
 <html>
 <body>
-<h5>This Mail is sent with the help of <a href="https://github.com/saran-surya/auth-setup">auth-setup created by Saran Surya R</a> </h5>
 <h3>Please enter the below mentioned OTP for logging into {CompanyName}</h3>
 	<h2>{otp}</h2>
   <br/>
